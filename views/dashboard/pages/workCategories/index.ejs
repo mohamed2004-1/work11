@@ -1,0 +1,50 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "workCategories", pageTitle: "categories Page", pathLevel: "/"}) %>
+
+<br>
+<a href="/dashboard/workCategories/createForm">Create New Work Category</a>
+<br><br>
+<%if(Categories.length > 0){%>
+<table border style="width: 100%">
+    <!-- <tr>
+        <th>work Categories</th>
+    </tr> -->
+    <tr>
+        <th>Category ID</th>
+        <th>Category Name</th>
+        <th>Operations</th>
+    </tr>
+    <% Categories.forEach((oneCategory) => { %>
+    <tr>
+        <th><%= oneCategory.id %></th>
+        <th><%= oneCategory.catName %></th>
+        <th>
+            <a href="/dashboard/workCategories/show/<%=oneCategory.id%>">
+                Details
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="/dashboard/workCategories/updateCateg/<%=oneCategory.id%>">
+                Update
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <span onclick="destroy(this);" productID="<%=oneCategory.id%>" style="cursor: pointer;">
+                Delete
+            </span>
+        </th>
+    </tr>
+    <% }); %>
+</table>
+<%}
+else {%>
+<h3>No Category created yet !!!!</h3>
+<%}%>
+
+<script>
+    function destroy(cb){
+        if(confirm("Are You Sure you want to Delete this Category ?")) {
+            id = cb.getAttribute("productID");
+            window.location.replace("/dashboard/workCategories/destroy/" + id);
+        }        
+    }
+</script>
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel: "/" }) %>

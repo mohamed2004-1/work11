@@ -1,0 +1,32 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "workProjects", pageTitle: "work Projects Page", pathLevel: "/"}) %>
+
+<%if(oneProject.length > 0) {%>
+    <table border width="100%">
+        <tr>
+            <th>ID : <%= oneProject[0].id %></th> 
+            <th>Title : <%= oneProject[0].title %></th> 
+            <th>Description : <%= oneProject[0].description %></th> 
+            <th rowspan="3">
+                <img src="../../../uploads/<%=oneProject[0].photo%>" width="450" alt="">
+            </th>
+    </table>
+<%}
+else {%>
+    <h3>No slides with this information !!!</h3>
+<%}%>
+<br>
+<label>Add Project to Category</label>
+<form action="/selectCategory" method="post">
+<label for="projectCateg">Project ID</label>
+<input type="number" name="projectID" id="projectID" placeholder="Enter The Project ID" >
+&nbsp;&nbsp;
+<label for="projectCateg">- Category ID</label>
+<input type="number" name="categoryID" id="categoryID" placeholder="Enter The Categry ID" >
+&nbsp;&nbsp;&nbsp;
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<label>Delete Project from Category</label>
+<form action="/deleteCategory" method="post">
+<label for="projectCateg">Project ID</label>
+<br>
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>

@@ -1,0 +1,12 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "workCategories", pageTitle: "categories Page", pathLevel: "/"}) %>
+
+<h3>Create New Work Category</h3>
+<table>
+<form method="post" action="/workCateg" >
+    <label for="title">Categoty</label>
+    <input type="text" name="catName" id="catName">
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</table>
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>

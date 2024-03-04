@@ -1,0 +1,20 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "workProjects", pageTitle: "work Projects Page", pathLevel: "/"}) %>
+
+<%if(oneProject.length > 0) {%>
+    <table border width="100%">
+        <tr>
+            <th>Title</th>
+            <th><%= oneProject[0].title %></th> 
+            <th>description</th>
+            <th><%= oneProject[0].description %></th> 
+            <th rowspan="3">
+                <img src="../../../uploads/<%=oneProject[0].photo%>" width="450" alt="">
+        </th>
+    </table>
+<%}
+else {%>
+    <h3>No slides with this information !!!</h3>
+<%}%>
+
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>

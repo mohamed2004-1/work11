@@ -1,0 +1,29 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "workProjects", pageTitle: "work Projects Page", pathLevel: "/"}) %>
+
+<br><br>
+<%if(Projects.length > 0){%>
+<table border style="width: 100%">
+    <!-- <tr>
+        <th>work Projects</th>
+    </tr> -->
+    <tr>
+        <th>projectID</th>
+        <th>categoryID</th>
+    </tr>
+    <% Projects.forEach((oneProject) => { %>
+    <!-- <tr> -->
+        <th><%= oneProject.projectID %></th>
+        <!-- <th> -->
+    <!-- <tr> -->
+        <th><%= oneProject.categoryID %></th>
+        <!-- <th> -->
+    <!-- <tr> -->
+    </tr>
+    <% }); %>
+</table>
+<%}
+else {%>
+<h3>No Category created yet !!!!</h3>
+<%}%>
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel: "/" }) %>

@@ -1,0 +1,61 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "workProjects", pageTitle: "work Projects Page", pathLevel: "/"}) %>
+
+<br>
+<a href="/dashboard/workProjects/createForm">Create New Project</a>
+<br><br>
+<%if(Projects.length > 0){%>
+<table border style="width: 100%">
+    <!-- <tr>
+        <th>work Projects</th>
+    </tr> -->
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Photo</th> 
+        <th>Operations</th>
+    </tr>
+    <% Projects.forEach((oneProject) => { %>
+    <!-- <tr> -->
+        <th><%= oneProject.title %></th>
+        <!-- <th> -->
+    <!-- <tr> -->
+        <th><%= oneProject.description %></th>
+        <!-- <th> -->
+    <!-- <tr> -->
+        <th><%= oneProject.photo %></th>
+        <th>
+            &nbsp;&nbsp;&nbsp;
+            <a href="/dashboard/workProjects/show/<%=oneProject.id%>">
+                Details
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="/dashboard/workProjects/updateProject/<%=oneProject.id%>">
+                Update
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="/dashboard/workProjects/projectCategory1/<%=oneProject.id%>">
+                Add to Category
+            </a>
+            &nbsp;&nbsp;&nbsp;
+            <span onclick="destroy(this);" productID="<%=oneProject.id%>" style="cursor: pointer;">
+                Delete
+            </span>
+        </th>
+    </tr>
+    <% }); %>
+</table>
+<%}
+else {%>
+<h3>No Category created yet !!!!</h3>
+<%}%>
+
+<script>
+    function destroy(obj){
+        if(confirm("Are You Sure you want to Delete this Category ?")) {
+            id = obj.getAttribute("productID");
+            window.location.replace("/dashboard/workProjects/destroy/" + id);
+        }        
+    }
+</script>
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel: "/" }) %>

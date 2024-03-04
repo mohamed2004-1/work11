@@ -1,0 +1,19 @@
+<%- include('../../partials/headerLayout.ejs', {pageName: "workCategories", pageTitle: "categories Page", pathLevel: "/"}) %>
+
+<%if(oneCategory.length > 0) {%>
+    <table border width="100%">
+        <tr>
+            <th>ID</th>
+            <th><%= oneCategory[0].id %></th> 
+            &nbsp;&nbsp;&nbsp;
+            <th>Title</th>
+            <th><%= oneCategory[0].catName %></th> 
+        
+    </table>
+<%}
+else {%>
+    <h3>No slides with this information !!!</h3>
+<%}%>
+
+
+<%- include('../../partials/footerLayout.ejs', { pathLevel : "/"}) %>
